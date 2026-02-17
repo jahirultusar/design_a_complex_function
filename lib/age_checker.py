@@ -28,9 +28,9 @@ def age_checker(dob_str):
 
     # Check age
     if age < 16:
-        print(f"Access denied. You are {age} years old, but must be at least 16.")
+        return (f"Access denied. You are {age} years old, but must be at least 16.")
     else:
-        print("Access granted!")
+        return ("Access granted!")
     
-age_checker("2003-12-02")
-age_checker("2021-12-02")
+# age_checker("2003-12-02")
+# age_checker("2021-12-02")

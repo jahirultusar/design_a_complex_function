@@ -44,3 +44,20 @@ def age_checker(dob_str):
 ```
 
 ## Tests
+
+```python
+"""
+Required string input format should be YYYY-MM-DD
+If input is in a different format raise an Exception
+"""
+
+"""
+Check if age is => 16
+Return "Access Granted"
+"""
+
+"""
+Check if age is < 16
+Return "Access Denied"
+"""
+```
