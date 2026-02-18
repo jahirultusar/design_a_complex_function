@@ -1,36 +1,25 @@
-from datetime import datetime, date
+
+# will try to solve age check with datetime module 
+    # datetime module
+        # - will check correct user input/format  
+        # - will check todays date
+        # - will calculate the age with .year method
+# then return message to user if access is granted or denied 
+
+import datetime
 from dateutil.relativedelta import relativedelta
-# Dateutil will be squiggly - to install dateutil, please run the below:
-# pip install python-dateutil      
 
-def age_checker(dob_str):
-    """
-    Checks if someone is at least 16 years old based on their date of birth.
-    
-    Args:
-        dob_str (str): Date of birth in 'YYYY-MM-DD' format
-    
-    Returns:
-        str: Access message
-    """
-    
-    # Convert the string to a datetime object using datetime
-    dob = datetime.strptime(dob_str, "%Y-%m-%d").date()
-    
-    # Get today's date
-    today = date.today()
-    # print(dob)
-    # print(today)
+def age_checker(user_dob):
+    """checks dob in correct format and 
+    returns access message"""
+    try:
+        formatted_dob = datetime.datetime.strptime(user_dob, "%Y-%m-%d").date()
+    except ValueError:
+        raise ValueError("Incorrect date format!")
+    today = datetime.datetime.today()
+    age = relativedelta(today, formatted_dob).years
 
-    # Calculate age using dateutil.relativedelta
-    age = relativedelta(today, dob).years
-    # print(age)
-
-    # Check age
     if age < 16:
-        return (f"Access denied. You are {age} years old, but must be at least 16.")
-    else:
-        return ("Access granted!")
-    
-# age_checker("2003-12-02")
-# age_checker("2021-12-02")
+        return "Too young to enter. Access denied!"
+    else: 
+        return "Welcome to the club!"
